@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WhatsApp লিংক জেনারেটর</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #075e54;
+    }
+    input, button {
+      padding: 10px;
+      width: 90%;
+      max-width: 400px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1ebe57;
+    }
+    .link-output {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>WhatsApp লিংক জেনারেটর</h1>
+  <input type="text" id="phone" placeholder="ফোন নাম্বার লিখুন (যেমন: 8801XXXXXXXXX)">
+  <button onclick="generateLink()">লিংক তৈরি করুন</button>
+  <div class="link-output" id="result"></div>
+
+  <script>
+    function generateLink() {
+      const phone = document.getElementById("phone").value.trim();
+      const result = document.getElementById("result");
+
+      if (/^\d{10,15}$/.test(phone)) {
+        const link = https://wa.me/${phone};
+        result.innerHTML = লিংক: <a href="${link}" target="_blank">${link}</a>;
+      } else {
+        result.textContent = "দয়া করে সঠিক নাম্বার দিন (শুধু ডিজিট, দেশ কোড সহ)";
+      }
+    }
+  </script>
+</body>
+</html>
