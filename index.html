@@ -69,41 +69,31 @@
 
   <div class="container">
     <h2>WhatsApp Link Generator</h2>
-    <input type="text" id="number" placeholder="Enter phone number with country code" />
+    <input type="text" id="number" />
     <button onclick="generateLink()">Generate WhatsApp Link</button>
 
     <div id="result" style="display: none;">
       <p>Here is your link:</p>
-      <a id="link" href="#" target="_blank"></a>
+      <a id="link" href="#"></a>
       <button class="copy-btn" onclick="copyLink()">Copy Link</button>
     </div>
   </div>
 
-  <script>
-    function generateLink() {
-      let input = document.getElementById("number").value;
-      let cleanedNumber = input.replace(/[^\d]/g, "");
+  ;
+    const linkElement = document.getElementById("link");
+    linkElement.href = link;
+    linkElement.textContent = link;
 
-      if (cleanedNumber.length < 10) {
-        alert("Please enter a valid phone number with country code.");
-        return;
-      }
+    document.getElementById("result").style.display = "block";
+  }
 
-      const link = https://wa.me/${cleanedNumber};
-      const linkElement = document.getElementById("link");
-      linkElement.href = link;
-      linkElement.textContent = link;
-
-      document.getElementById("result").style.display = "block";
-    }
-
-    function copyLink() {
-      const link = document.getElementById("link").textContent;
-      navigator.clipboard.writeText(link).then(() => {
-        alert("Link copied to clipboard!");
-      });
-    }
-  </script>
+  function copyLink() {
+    const link = document.getElementById("link").textContent;
+    navigator.clipboard.writeText(link).then(() => {
+      alert("Link copied to clipboard!");
+    });
+  }
+</script>
 
 </body>
 </html>
