@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp Link Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #075e54;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      background-color: #25D366;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #20b954;
+    }
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>WhatsApp Link Generator</h1>
+    <input type="text" id="number" placeholder="Enter phone number with country code (e.g. 8801XXXXXXXXX)" />
+    <button onclick="generateLink()">Generate Link</button>
+    <div class="footer">Developed by Niloy Sarkar</div>
+  </div>
+
+  <script>
+    function generateLink() {
+      const number = document.getElementById("number").value.trim();
+      if (number && /^\d+$/.test(number)) {
+        const link = https://wa.me/${number};
+        window.open(link, "_blank");
+      } else {
+        alert("Please enter a valid phone number.");
+      }
+    }
+  </script>
+</body>
+</html>
