@@ -8,16 +8,16 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #f1f1f1;
+      background: #f9f9f9;
       padding: 50px;
     }
     .container {
       background: white;
       padding: 30px;
       border-radius: 10px;
-      max-width: 400px;
+      max-width: 450px;
       margin: auto;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
     input {
       width: 100%;
@@ -39,6 +39,30 @@
     button:hover {
       background-color: #1ebc5d;
     }
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    #link {
+      color: #25D366;
+      font-weight: bold;
+      word-break: break-all;
+      display: block;
+      margin-top: 10px;
+    }
+    .copy-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .copy-btn:hover {
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
@@ -47,13 +71,17 @@
     <h2>WhatsApp Link Generator</h2>
     <input type="text" id="number" placeholder="Enter phone number with country code" />
     <button onclick="generateLink()">Generate WhatsApp Link</button>
+
+    <div id="result" style="display: none;">
+      <p>Here is your link:</p>
+      <a id="link" href="#" target="_blank"></a>
+      <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+    </div>
   </div>
 
   <script>
     function generateLink() {
       let input = document.getElementById("number").value;
-
-      // Remove all characters except digits
       let cleanedNumber = input.replace(/[^\d]/g, "");
 
       if (cleanedNumber.length < 10) {
@@ -62,7 +90,18 @@
       }
 
       const link = https://wa.me/${cleanedNumber};
-      window.open(link, "_blank");
+      const linkElement = document.getElementById("link");
+      linkElement.href = link;
+      linkElement.textContent = link;
+
+      document.getElementById("result").style.display = "block";
+    }
+
+    function copyLink() {
+      const link = document.getElementById("link").textContent;
+      navigator.clipboard.writeText(link).then(() => {
+        alert("Link copied to clipboard!");
+      });
     }
   </script>
 
